@@ -75,7 +75,7 @@ func NewServiceAccountClient(serviceAccountFile string) (*http.Client, error) {
 		return nil, err
 	}
 
-	conf, err := google.JWTConfigFromJSON(content, "https://www.googleapis.com/auth/drive")
+	conf, err := google.JWTConfigFromJSON(content, "https://www.googleapis.com/auth/drive.file")
 	if(err != nil) {
 		return nil, err
 	}
@@ -86,7 +86,7 @@ func getConfig(clientId, clientSecret string) *oauth2.Config {
 	return &oauth2.Config{
 		ClientID:     clientId,
 		ClientSecret: clientSecret,
-		Scopes:       []string{"https://www.googleapis.com/auth/drive"},
+		Scopes:       []string{"https://www.googleapis.com/auth/drive.file"},
 		RedirectURL:  "urn:ietf:wg:oauth:2.0:oob",
 		Endpoint: oauth2.Endpoint{
 			AuthURL:  "https://accounts.google.com/o/oauth2/auth",
